@@ -2,6 +2,9 @@ h1,
 p {
   font-family: Roboto;
 }
+div.ag-theme-alpine {
+  height: 100% important;
+}
 
 .example-wrapper {
   display: flex;
@@ -58,11 +61,10 @@ input {
   font-size: 12px;
 }
 
-
-span.badge{
+span.badge {
   color: black;
   display: inline-block;
-  background-color: #E4E9EF;
+  background-color: #e4e9ef;
   border-radius: 10px;
   height: 22px;
   margin: 10px -10px;
@@ -74,48 +76,115 @@ span.badge{
 span.badge.InProgress,
 span.badge.InProcess,
 span.badge.Working,
-span.badge.Paid
-{
+span.badge.Paid {
   color: black;
-  background-color: #FFD6C2;
+  background-color: #ffd6c2;
 }
 
 span.badge.PreInvoice,
 span.badge.Viewed,
 span.badge.WithAdvisor,
-span.badge.Pending
-{
+span.badge.Pending {
   color: black;
-  background-color: #FFA87D;
+  background-color: #ffa87d;
 }
 
 span.badge.CheckedIn,
 span.badge.NotDispatched,
-span.badge.Warranty
-{
+span.badge.Warranty {
   color: white;
-  background-color: #96BDFF ;
+  background-color: #96bdff;
 }
 span.badge.Completed,
-span.badge.Closed
-{
+span.badge.Closed {
   color: black;
-  background-color: #D6C2FF;
+  background-color: #d6c2ff;
 }
-span.badge.Default{
-  display:none;
-}
-
-.ag-row-group span{
-  font-weight:bold;
-  font-size:14px;
+span.badge.Default {
+  display: none;
 }
 
-.chart{
-  width:100%;
-  height:250px;
-  background-image: url( https://raw.githubusercontent.com/TranceKelley/ag-grid-react-hello-world-zayhn6/main/Chart%20Example.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-blend-mode: multiply;
+.ag-row-group span {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input[type='radio'] {
+  position: relative;
+  top: -2px;
+}
+
+input[type='radio']:before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+input[type='radio']:checked:before {
+  content: 'X';
+}
+.red:before {
+  background-color: red;
+}
+.red.one:before {
+  content: '1';
+}
+.red.two:before {
+  content: '2';
+}
+.red.three:before {
+  content: '3';
+}
+.yellow.four:before {
+  content: '4';
+}
+.yellow.five:before {
+  content: '5';
+}
+.yellow.six:before {
+  content: '6';
+}
+.yellow.seven:before,
+.green.seven:before {
+  content: '7';
+}
+.yellow.eight:before,
+.green.eight:before {
+  content: '8';
+}
+.green.nine:before,
+.green.nine:before {
+  content: '9';
+}
+.green.ten:before {
+  content: '10';
+}
+.green.eleven:before {
+  content: '11';
+}
+.green.twelve:before {
+  content: '12';
+}
+.yellow:before {
+  background-color: orange;
+}
+.green:before {
+  background-color: green;
+}
+
+.shortfield {
+  width: 25px;
+  height: 20px;
+  padding: 0 5px;
+}
+
+.ag-cell-value.ag-cell.ag-cell-not-inline-editing {
+  //border:initial;
 }
