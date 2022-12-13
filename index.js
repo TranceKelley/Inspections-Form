@@ -23,6 +23,15 @@ const App = () => {
     );
   }
 
+  function badge(params) {
+    return (
+      <span className={'badge ' + params.value}>
+        
+        {params.value}
+      </span>
+    );
+  }
+
   const PSI = (p) => {
     return (
       <>
@@ -33,40 +42,47 @@ const App = () => {
   };
 
   const Tread = (p) => {
+    const[myValue,setValue]=useState();
+
     return (
       <>
-        <input type="text" class="shortfield" />
+        <input type="text" class="shortfield" value={myValue}/>
         {p.value}
-        <input type="radio" name={p.value} class="red one" value="1" />
-        <input type="radio" name={p.value} class="red two" value="2" />
-        <input type="radio" name={p.value} class="red three" value="3" />
-        <input type="radio" name={p.value} class="yellow four" value="4" />
-        <input type="radio" name={p.value} class="yellow five" value="5" />
-        <input type="radio" name={p.value} class="yellow six" value="6" />
-        <input type="radio" name={p.value} class="yellow seven" value="7" />
-        <input type="radio" name={p.value} class="yellow eight" value="8" />
-        <input type="radio" name={p.value} class="green nine" value="9" />
-        <input type="radio" name={p.value} class="green ten" value="10" />
-        <input type="radio" name={p.value} class="green eleven" value="11" />
-        <input type="radio" name={p.value} class="green twelve" value="2" />
+        <div class="checkbox-group">
+        <input type="radio" name={p.value} class="red one" value="1" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="red two" value="2" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="red three" value="3" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow four" value="4" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow five" value="5" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow six" value="6" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow seven" value="7" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow eight" value="8" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="green nine" value="9" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="green ten" value="10" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="green eleven" value="11" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="green twelve" value="2" onChange={e=>setValue(e.target.value)}/>
+        </div>
       </>
     );
   };
 
   const Breaks = (p) => {
+    const[myValue,setValue]=useState();
     return (
       <>
-        <input type="text" name={p.value} class="shortfield" />
+        <input type="text" class="shortfield" value={myValue}/>
         {p.value}
-        <input type="radio" name={p.value} class="red one" value="1" />
-        <input type="radio" name={p.value} class="red two" value="2" />
-        <input type="radio" name={p.value} class="red three" value="3" />
-        <input type="radio" name={p.value} class="yellow four" value="4" />
-        <input type="radio" name={p.value} class="yellow five" value="5" />
-        <input type="radio" name={p.value} class="yellow six" value="6" />
-        <input type="radio" name={p.value} class="green seven" value="7" />
-        <input type="radio" name={p.value} class="green eight" value="8" />
-        <input type="radio" name={p.value} class="green nine" value="9" />
+        <div class="checkbox-group">
+        <input type="radio" name={p.value} class="red one" value="1" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="red two" value="2" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="red three" value="3" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow four" value="4" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow five" value="5" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="yellow six" value="6" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="green seven" value="7" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="green eight" value="8" onChange={e=>setValue(e.target.value)}/>
+        <input type="radio" name={p.value} class="green nine" value="9" onChange={e=>setValue(e.target.value)}/>
+        </div>
       </>
     );
   };
@@ -113,6 +129,7 @@ const App = () => {
       },
       {
         field: 'InspectionLine',
+        flex: 5,
         filter: 'agSetColumnFilter',
         wrapText: true,
         autoHeight: true,
@@ -121,7 +138,6 @@ const App = () => {
         resizable: false,
         cellRenderer: inspectionLine,
         cellRendererSelector: (p) => {
-          var check = p.value.includes('Tire');
           if (p.value.includes('Tread depth')) {
             return { component: Tread };
           }
@@ -132,8 +148,31 @@ const App = () => {
             return { component: Breaks };
           }
         },
+      
       },
-
+      {
+        field: 'PreviousInspection',
+        headerName:'Last Results',
+        filter: 'agSetColumnFilter',
+        menuTabs: ['filterMenuTab'],
+        cellRenderer: badge,
+        valueGetter: p => {
+          return p.data.PreviousInspection + ' ' + p.data.LastServiceDate + ' ' + p.data.LastServiceMileage ;
+        },
+        flex: 2,
+        maxWidth: 200,
+      },
+      {
+        field: 'Condition',
+        flex: 1,
+        maxWidth: 120,
+        
+      },
+      {
+        field: 'Service',
+        flex: 1,
+        maxWidth: 110,
+      },
       {
         field: 'Actions',
         headerName: '',
@@ -214,7 +253,7 @@ const App = () => {
             enableRangeSelection={true}
             groupDisplayType={'groupRows'}
             enableRangeSelection={true}
-            headerHeight={0}
+            headerHeight={40}
           ></AgGridReact>
         </div>
       </div>

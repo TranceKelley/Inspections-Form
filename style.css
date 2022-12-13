@@ -73,6 +73,18 @@ span.badge {
   line-height: 22px;
 }
 
+span.badge.Passed{
+  background-color: lightgreen;
+}
+
+span.badge.Risk{
+  background-color: lightsalmon;
+}
+
+span.badge.Failed{
+  background-color: lightcoral;
+}
+
 span.badge.InProgress,
 span.badge.InProcess,
 span.badge.Working,
@@ -187,4 +199,8 @@ input[type='radio']:checked:before {
 
 .ag-cell-value.ag-cell.ag-cell-not-inline-editing {
   //border:initial;
+}
+
+.checkbox-group{
+  display: inline-block;
 }
