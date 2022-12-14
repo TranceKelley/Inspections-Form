@@ -1,6 +1,26 @@
 export function getData() {
   const rowData = [
     {
+      ID: '80',
+      Category: 'Recomended Inspections - Commonly Failed Inspections at 60K',
+      InspectionLine: 'Timing Belt',
+      LastServiceDate: '',
+      PreviousInspection: 'Passed',
+      LastServiceMileage: '',
+      Condition: '',
+    },
+
+    {
+      ID: '81',
+      Category: 'Recomended Inspections - Commonly Failed Inspections at 60K',
+      InspectionLine: 'Gas Cap Sensor',
+      LastServiceDate: '',
+      PreviousInspection: 'Passed',
+      LastServiceMileage: '',
+      Condition: '',
+    },
+
+    {
       ID: '1',
       Category: 'Interior / Exterior',
       InspectionLine: 'Bulbs and Lights',
